@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    padding: 0 16px;
+    background-color: white;
+}
+
+.logo-button {
+    padding: 0;
+    margin-right: 16px;
+}
+
+.large-icon {
+    transform: scale(1.5);  /* Hace el icono 50% más grande */
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.title-left {
+    margin: 0;
+    text-align: left;
+    flex: 1;
+    padding: 0;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+

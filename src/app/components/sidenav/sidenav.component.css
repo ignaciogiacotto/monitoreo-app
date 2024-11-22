@@ -1,0 +1,42 @@
+.example-container {
+    height: 100vh;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .example-container {
+    flex-direction: column;
+    }
+}
+mat-sidenav {
+width: 90px;
+padding: 16px;
+bottom: 130px;
+}
+
+mat-nav-list a[mat-list-item] {
+    height: 48px;
+}
+
+mat-nav-list a[mat-list-item] mat-icon {
+    margin-right: 12px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+
+mat-nav-list a[mat-list-item] {
+    margin-bottom: 40px;
+}
+
+
+
+.mat-mdc-list-item .mat-icon {
+    width: 24px !important;
+    height: 24px !important;
+    margin: auto;             /* Centra el icono */
+    display: flex;            /* Asegura que el icono se muestre correctamente */
+    align-items: center;      /* Centra verticalmente */
+    justify-content: center;  /* Centra horizontalmente */
+}

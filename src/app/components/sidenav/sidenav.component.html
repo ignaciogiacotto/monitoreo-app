@@ -1,0 +1,24 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" [opened]="sidenavService.isOpen">
+        <mat-nav-list>
+            <a mat-list-item routerLink="/dashboard">
+                <mat-icon svgIcon="worldS"></mat-icon>
+            </a>
+            <a mat-list-item routerLink="/monitoreo">
+                <mat-icon svgIcon="plantS"></mat-icon>
+            </a>
+            <a mat-list-item routerLink="/sensor-history">
+                <mat-icon svgIcon="sensorS"></mat-icon>
+            </a>
+            <a mat-list-item routerLink="/plant-history">
+                <mat-icon svgIcon="historyplantS"></mat-icon>
+            </a>
+            <a mat-list-item routerLink="/logout">
+                <mat-icon svgIcon="logoutS"></mat-icon>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
