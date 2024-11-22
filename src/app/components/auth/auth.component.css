@@ -1,0 +1,163 @@
+.login-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.info-panel {
+  flex: 1;
+  padding: 4rem;
+  position: relative;
+  color: white;
+  background: url('/assets/login/loginImagen.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, #33A3AA 0%, #107076 100%);
+  opacity: 0.9;
+}
+
+.info-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.info-panel h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  max-width: 500px;
+}
+
+.features {
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+}
+
+.feature-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 1rem;
+}
+
+.feature-text h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.feature-text p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+}
+
+.login-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: white;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.login-form h3 {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.forgot-password {
+  display: block;
+  color: #35A7A7;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.btn-login {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #35A7A7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #2a8686;
+}
+
+.terms {
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+.terms-link {
+  color: #35A7A7;
+  text-decoration: none;
+}

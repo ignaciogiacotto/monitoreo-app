@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-auth',
+  selector: 'auth',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.css'
 })

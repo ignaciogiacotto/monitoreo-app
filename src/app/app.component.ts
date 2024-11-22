@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthComponent } from './components/auth/auth.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    ReactiveFormsModule,],
+    ReactiveFormsModule,
+    AuthComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
