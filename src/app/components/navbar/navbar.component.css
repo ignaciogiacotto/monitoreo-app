@@ -13,7 +13,7 @@
 }
 
 .large-icon {
-    transform: scale(1.5);  /* Hace el icono 50% más grande */
+    transform: scale(1.5);
     width: 32px !important;
     height: 32px !important;
 }
