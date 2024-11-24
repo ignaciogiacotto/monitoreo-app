@@ -7,6 +7,7 @@ import { SidenavService } from '../../services/sidenav.service';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'navbar',
@@ -26,11 +27,23 @@ export class NavbarComponent {
   constructor(
     public sidenavService: SidenavService,
     private matIconRegistry: MatIconRegistry,
-    private domSanitizer: DomSanitizer){
+    private domSanitizer: DomSanitizer,
+    private authService: AuthService
+  ){
       this.matIconRegistry.addSvgIcon(
         'logo', 
         this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/icons/logo.svg'));    
     }
+
+  currentUser: string = '';
+
+  ngOnInit() {
+    this.authService.currentUser$.subscribe(user => {
+      if (user) {
+        this.currentUser = user.name + ' ' + user.lastname;
+      }
+    });
+  }
 
   toggleSidenav() { 
     this.sidenavService.toggle();

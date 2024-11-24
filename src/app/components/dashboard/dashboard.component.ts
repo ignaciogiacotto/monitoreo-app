@@ -8,11 +8,13 @@ import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Plantas } from '../../models/plantas';
 import { Metrics } from '../../models/metrics';
 import { PlantaFormComponent } from '../planta-form/planta-form.component';
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'dashboard',
   standalone: true,
-  imports: [CommonModule, NgbDropdownModule],
+  imports: [CommonModule, NgbDropdownModule, NavbarComponent, SidenavComponent],
   providers: [PlantasService, MetricsService, StatsCardsService],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']

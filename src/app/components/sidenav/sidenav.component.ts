@@ -6,6 +6,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { SidenavService } from '../../services/sidenav.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -26,7 +27,9 @@ export class SidenavComponent {
 constructor(
   public sidenavService: SidenavService,
   private matIconRegistry: MatIconRegistry,
-  private domSanitizer: DomSanitizer) {
+  private domSanitizer: DomSanitizer,
+  private authService: AuthService
+) {
 
   this.matIconRegistry.addSvgIcon(
     'worldS', 
@@ -48,5 +51,9 @@ constructor(
     'logoutS', 
     this.domSanitizer.bypassSecurityTrustResourceUrl('/assets/icons/logoutS.svg'));
 }
+
+  logout() {
+    this.authService.logout();
+  }
 
 }
