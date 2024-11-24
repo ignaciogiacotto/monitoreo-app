@@ -13,6 +13,8 @@ export class PlantasService  {
 
     constructor(private http: HttpClient, private authService: AuthService) { }
 
+    private API_URL = 'https://monitoreo-app-backend-techforb.netlify.app/api';
+
     getHeaders(): HttpHeaders {
         return new HttpHeaders({
             'Authorization': `Bearer ${this.authService.getToken()}`
@@ -20,19 +22,19 @@ export class PlantasService  {
     }
 
     findAll(): Observable<Plantas[]> {
-        return this.http.get<Plantas[]>('http://localhost:8080/api/plantas', 
+        return this.http.get<Plantas[]>(`${this.API_URL}/plantas`, 
             {headers: this.getHeaders()}).pipe(
             map((plantas: any) => plantas as Plantas[]),
         );
     }
 
     removePlanta(id: number) {
-        return this.http.delete(`http://localhost:8080/api/plantas/${id}`, 
+        return this.http.delete(`${this.API_URL}/plantas/${id}`, 
             {headers: this.getHeaders()});
     }
 
     createPlanta(planta: Plantas) {
-        return this.http.post(`http://localhost:8080/api/plantas`, planta, 
+        return this.http.post(`${this.API_URL}/plantas`, planta, 
             {headers: this.getHeaders()});
     }
 }
