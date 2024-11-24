@@ -13,7 +13,7 @@ interface LoginResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'https://monitoreo-app-backend-techforb.netlify.app/api';
+  private readonly API_URL = 'https://ec2-18-219-192-204.us-east-2.compute.amazonaws.com/api';
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
