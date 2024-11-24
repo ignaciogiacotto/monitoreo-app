@@ -70,7 +70,6 @@ export class DashboardComponent implements OnInit {
   removePlanta(planta: Plantas): void {
     this.plantasService.removePlanta(planta.id).subscribe({
       next: () => {
-        // En lugar de filtrar manualmente, recargamos todos los datos
         this.reloadDashboardData();
       },
       error: (error) => {

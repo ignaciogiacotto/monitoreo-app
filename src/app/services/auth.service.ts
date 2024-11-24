@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 
 interface LoginResponse {
   token: string;
-  user: any; // los datos del usuario que vienen del backend
+  user: any;
 }
 
 @Injectable({

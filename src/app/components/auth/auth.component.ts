@@ -36,7 +36,6 @@ export class AuthComponent implements OnInit {
         this.router.navigate(['/dashboard']);
       });
       console.log('Datos de inicio de sesión:', loginData);
-      // Aquí envías los datos al backend
     } else {
       console.log('Formulario inválido');
     }

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-// import { MonitoreoAppComponent } from "./components/monitoreo-app.component";
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -15,7 +14,6 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
   standalone: true,
   imports: [
     RouterOutlet,
-    // MonitoreoAppComponent, 
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
