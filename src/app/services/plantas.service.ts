@@ -13,7 +13,7 @@ export class PlantasService  {
 
     constructor(private http: HttpClient, private authService: AuthService) { }
 
-    private API_URL = 'https://ec2-18-219-192-204.us-east-2.compute.amazonaws.com/api';
+    private API_URL = 'https://ec2-18-219-192-204.us-east-2.compute.amazonaws.com:8080/api';
 
     getHeaders(): HttpHeaders {
         return new HttpHeaders({
