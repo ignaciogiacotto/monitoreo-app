@@ -5,3 +5,14 @@
 .dashboard {
     background-color: #bce6f5;
 }
+
+.country-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flag-icon {
+  width: 24px;
+  height: auto;
+}

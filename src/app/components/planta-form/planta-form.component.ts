@@ -1,50 +1,81 @@
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, Validators } from '@angular/forms';
-import { FormGroup } from '@angular/forms';
-import { Component } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PlantasService } from '../../services/plantas.service';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Plantas } from '../../models/plantas';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
-  selector: 'planta-form',
+  selector: 'app-planta-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './planta-form.component.html',
-  styleUrl: './planta-form.component.css'
+  styleUrls: ['./planta-form.component.css']
 })
-export class PlantaFormComponent {
-    plantaForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      country: new FormControl('', Validators.required),
-      flag: new FormControl(''),
-      readings: new FormControl(0),
-      mediumAlerts: new FormControl(0),
-      highAlerts: new FormControl(0)
-  });
+export class PlantaFormComponent implements OnInit {
+  plantaForm: FormGroup;
+  countries: { code: string; name: string }[] = [];
+  selectedFlag: string = '';
+  @Input() data: { planta?: any; isEdit: boolean } = { isEdit: false };
 
   constructor(
-    private plantasService: PlantasService,
-    private modal: NgbActiveModal
-  ) {}
+    private fb: FormBuilder,
+    public activeModal: NgbActiveModal,
+    private countriesService: CountriesService
+  ) {
+    this.plantaForm = this.fb.group({
+      name: ['', Validators.required],
+      country: ['', Validators.required],
+      lecturas: [null],
+      lecturasMax: [null],
+      alertasMedias: [null],
+      alertasRojas: [null]
+    });
+  }
 
-  onSubmit() {
-    if( this.plantaForm.valid) {
-      this.plantasService.createPlanta(this.plantaForm.value as Plantas).subscribe({
-        next: () => {
-          this.modal.close();
-        },
-        error: (error) => {
-          console.error("Error al crear la planta", error);
-        }
-      })
+  ngOnInit() {
+    this.loadCountries();
+    
+    if (this.data?.isEdit && this.data?.planta) {
+      this.plantaForm.patchValue(this.data.planta);
+      this.selectedFlag = this.countriesService.getFlagUrl(this.data.planta.country);
     }
   }
 
-  closeForm() {
-    this.modal.dismiss();
+  private loadCountries() {
+    this.countriesService.getCountries().subscribe(countries => {
+      this.countries = countries.sort((a, b) => a.name.localeCompare(b.name));
+    });
   }
 
+  onCountryChange(event: Event): void {
+    const select = event.target as HTMLSelectElement;
+    if (select?.value) {
+      this.selectedFlag = this.countriesService.getFlagUrl(select.value);
+    }
+  }
 
+  onSubmit() {
+    if (this.plantaForm.valid) {
+        const formData = this.plantaForm.getRawValue();
+        
+        const plantaData = {
+            name: formData.name,
+            country: formData.country,
+            readings: formData.lecturas,
+            maxReadings: formData.lecturasMax,
+            mediumAlerts: formData.alertasMedias,
+            highAlerts: formData.alertasRojas,
+            disabledSensors: formData.lecturasMax
+        };
+        
+        this.activeModal.close(plantaData);
+    }
+}
+
+  closeForm() {
+    this.activeModal.dismiss();
+  }
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Metrics } from '../models/metrics';
+import { Plantas } from '../models/plantas';
 
 @Injectable({
     providedIn: 'root'
@@ -73,5 +74,14 @@ export class MetricsService  {
 
     getMetrics(): Observable<Metrics[]> {
         return of(this.metrics);
+    }
+
+    updateMetrics(planta: Plantas): void {
+        this.metrics = this.metrics.map(metric => ({
+            ...metric,
+            ok: metric.ok + (planta.readings || 0),
+            medium: metric.medium + (planta.mediumAlerts || 0),
+            high: metric.high + (planta.highAlerts || 0)
+        }));
     }
 }

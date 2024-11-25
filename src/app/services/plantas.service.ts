@@ -37,4 +37,9 @@ export class PlantasService  {
         return this.http.post(`${this.API_URL}/plantas`, planta, 
             {headers: this.getHeaders()});
     }
+
+    updatePlanta(id: number, planta: Partial<Plantas>) {
+        return this.http.put<Plantas>(`${this.API_URL}/plantas/${id}`, planta,
+            {headers: this.getHeaders()});
+    }
 }

@@ -1,23 +1,64 @@
 <div class="modal-header">
-    <h4 class="modal-title">Crear Nueva Planta</h4>
+    <h4 class="modal-title">{{ data.isEdit ? 'Editar planta' : 'Crear nueva planta' }}</h4>
     <button type="button" class="btn-close" (click)="closeForm()"></button>
 </div>
 
 <div class="modal-body">
     <form [formGroup]="plantaForm" (ngSubmit)="onSubmit()">
-        <div class="mb-3">
-            <label for="name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="name" formControlName="name">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="name" class="form-label">Nombre planta</label>
+                <input type="text" class="form-control" id="name" formControlName="name" 
+                    [placeholder]="data.isEdit ? '' : 'Ingrese nombre'">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="country" class="form-label">País</label>
+                <div class="input-group">
+                    <select class="form-control" id="country" formControlName="country" 
+                            [attr.disabled]="data.isEdit" (change)="onCountryChange($event)">
+                        <option value="">Seleccione país</option>
+                        <option *ngFor="let country of countries" [value]="country.code">
+                            {{country.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
         </div>
 
-        <div class="mb-3">
-            <label for="country" class="form-label">Seleccionar Pais</label>
-            <input type="text" class="form-control" id="country" formControlName="country">
+        <div class="row" *ngIf="data.isEdit">
+            <div class="col-md-6 mb-3">
+                <label for="lecturas" class="form-label">Cantidad de lecturas</label>
+                <input type="number" class="form-control" id="lecturas" formControlName="lecturas" 
+                    placeholder="Ingrese">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="lecturasMax" class="form-label">Sensores Deshabilitados</label>
+                <input type="number" class="form-control" id="lecturasMax" formControlName="lecturasMax" 
+                    placeholder="Ingrese">
+            </div>
+        </div>
+
+        <div class="row" *ngIf="data.isEdit">
+            <div class="col-md-6 mb-3">
+                <label for="alertasMedias" class="form-label">Alertas medias</label>
+                <input type="number" class="form-control" id="alertasMedias" formControlName="alertasMedias" 
+                    placeholder="Ingrese">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="alertasRojas" class="form-label">Alertas rojas</label>
+                <input type="number" class="form-control" id="alertasRojas" formControlName="alertasRojas" 
+                    placeholder="Ingrese">
+            </div>
         </div>
 
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="closeForm()">Cancelar</button>
-            <button type="submit" class="btn btn-primary" [disabled]="!plantaForm.valid">Crear</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!plantaForm.valid">
+                {{ data.isEdit ? 'Editar' : 'Crear' }}
+            </button>
         </div>
     </form>
 </div>
